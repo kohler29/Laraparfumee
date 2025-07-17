@@ -252,7 +252,7 @@ export default function ProductsPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"
         >
           <AnimatePresence>
             {sortedProducts.map((product, index) => (
@@ -282,7 +282,7 @@ export default function ProductsPage() {
                           alt={product.name}
                           width={300}
                           height={300}
-                          className="w-full h-64 object-cover"
+                          className="w-full h-48 md:h-64 object-cover"
                         />
                       </motion.div>
                       <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -317,7 +317,7 @@ export default function ProductsPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="p-6"
+                      className="p-3 md:p-6"
                     >
                       <div className="flex items-center justify-between mb-2">
                         <Badge variant="secondary" className="text-xs">
@@ -330,16 +330,16 @@ export default function ProductsPage() {
                         </div>
                       </div>
                       
-                      <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                      <h3 className="text-lg md:text-xl font-semibold mb-2">{product.name}</h3>
+                      <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">{product.description}</p>
                       
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-2xl font-bold text-purple-600">
+                          <span className="text-xl md:text-2xl font-bold text-purple-600">
                             ${product.price}
                           </span>
                           {product.originalPrice && (
-                            <span className="text-lg text-gray-400 line-through">
+                            <span className="text-sm md:text-lg text-gray-400 line-through">
                               ${product.originalPrice}
                             </span>
                           )}
@@ -348,7 +348,7 @@ export default function ProductsPage() {
                     </motion.div>
                   </CardContent>
               
-                  <CardFooter className="p-6 pt-0">
+                  <CardFooter className="p-3 md:p-6 pt-0">
                     <div className="flex gap-2 w-full">
                       <motion.div 
                         className="flex-1"
@@ -357,14 +357,15 @@ export default function ProductsPage() {
                       >
                         <Button
                           onClick={() => handleAddToCart(product)}
-                          className="w-full bg-purple-600 hover:bg-purple-700"
+                          className="w-full bg-purple-600 hover:bg-purple-700 text-xs md:text-sm h-8 md:h-10"
                         >
                           <motion.div
                             whileHover={{ x: 2 }}
                             className="flex items-center"
                           >
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Add to Cart
+                            <ShoppingCart className="w-3 md:w-4 h-3 md:h-4 mr-1 md:mr-2" />
+                            <span className="hidden sm:inline">Add to Cart</span>
+                            <span className="sm:hidden">Add</span>
                           </motion.div>
                         </Button>
                       </motion.div>
@@ -373,7 +374,7 @@ export default function ProductsPage() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <Button variant="outline" className="px-4">
+                          <Button variant="outline" className="px-2 md:px-4 text-xs md:text-sm h-8 md:h-10">
                             View
                           </Button>
                         </motion.div>
